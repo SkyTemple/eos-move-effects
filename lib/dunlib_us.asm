@@ -37,6 +37,11 @@
 .definelabel SealMove, 0x02314ABC
 .definelabel RandomSpeedUpDown, 0x02314C2C
 .definelabel ResetStats, 0x02314C8C
+.definelabel Confuse, 0x02314F38
+.definelabel Fear, 0x0231516C
+.definelabel RaiseHP, 0x023152E4
+.definelabel SelfPoison, 0x023157EC
+.definelabel DestinyBond, 0x02315A50
 
 .definelabel RandomChanceUT, 0x02324934
 .definelabel RandomChanceU, 0x02324A20

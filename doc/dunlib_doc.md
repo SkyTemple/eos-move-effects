@@ -130,6 +130,17 @@ Randomly increases or decreases speed by one stage (50/50).
 
 ### ResetStats(r0: User, r1: Target, r2: ???, r3: ???)
 
+### r0: CanInflict = Confuse(r0: User, r1: Target, r2: FailMessage, r3: OnlyCheck)
+
+### r0: CanInflict = Fear(r0: User, r1: Target, r2: FailMessage, r3: OnlyCheck)
+
+### r0: Success = RaiseHP(r0: User, r1: Target, r2: HPHeal, r3: MaxHPRaise, [r13]: FailMessage)
+
+### r0: CanInflict = SelfPoison(r0: User, r1: Target, r2: FailMessage, r3: OnlyCheck)
+
+Inflicts Poison status to the User, not the Target.
+
+### DestinyBond(r0: User, r1: Target)
 
 ## Random Utils
 
@@ -153,11 +164,9 @@ Always returns 0 if the User fainted.
 
 ### DamageWithRecoil(r0: User, r1: Target, r2: MoveData, r3: ???)
 
-### r0: Damaged = DealDamage(r0: User, r1: Target, r2: MoveData, r3: DamageMultiplier)
+### r0: Damaged = DealDamage(r0: User, r1: Target, r2: MoveData, r3: DamageMultiplier, [r13]: ???)
 
 0x100 is the normal multiplier
-
-Uses one extra parameter defined at [r13] when calling this.
 
 Damaged returns a non-zero value when the target was damaged.
 
