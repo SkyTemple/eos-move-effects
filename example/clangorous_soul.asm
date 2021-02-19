@@ -33,43 +33,67 @@
 	.org MoveStartAddress
 	.area MaxSize ; Define the size of the area
 		sub r13,r13,#0x40
+		mov r0, #1
+		str r0, [r13]
+		str r0, [r13, #+0x4]
 		mov r0, r9
 		mov r1, r9
 		mov r2, #0
 		mov r3, #2
 		bl AttackStatUp ; Raise attack by 2 stages
+		mov r0, #1
+		str r0, [r13]
+		str r0, [r13, #+0x4]
 		mov r0, r9
 		mov r1, r9
 		mov r2, #0
 		mov r3, #2
 		bl DefenseStatUp ; Raise defense by 2 stages
+		mov r0, #1
+		str r0, [r13]
+		str r0, [r13, #+0x4]
 		mov r0, r9
 		mov r1, r9
 		mov r2, #1
 		mov r3, #2
 		bl AttackStatUp ; Raise sp. attack by 2 stages
+		mov r0, #1
+		str r0, [r13]
+		str r0, [r13, #+0x4]
 		mov r0, r9
 		mov r1, r9
 		mov r2, #1
 		mov r3, #2
 		bl DefenseStatUp ; Raise sp. defense by 2 stages
+		mov r0, #1
 		mov r0, r9
 		mov r1, r9
 		mov r2, #0
-		mov r3, #2
-		bl FocusStatUp ; Raise accuracy by 2 stages
+		bl FocusStatUp ; Raise accuracy
 		mov r0, r9
 		mov r1, r9
 		mov r2, #1
-		mov r3, #2
-		bl FocusStatUp ; Raise evasiveness by 2 stages
+		bl FocusStatUp ; Raise evasiveness
+		mov r0, #1
+		str r0, [r13]
 		mov r0, r9
 		mov r1, r9
 		mov r2, #2
 		mov r3, #20
-		bl SpeedStatUp ; Raise speed by 2 stages
+		bl SpeedStatUp ; Raise speed by 2 stages during 20 turns
+		
+		ldrh r3, [r8, #+0x4]
+		mov r0, #0
+		mov r1, #1
+		mov r2, #0x23C ; Seems to be the value that is the most used when calling this
+		str r3, [r13, #+0x0]
+		str r0, [r13, #+0x4]
+		str r2, [r13, #+0x8]
 		mov r3, #0
 		str r3, [r13, #+0xc]
+		str r1, [r13, #+0x10]
+		str r0, [r13, #+0x14]
+		
 		ldr r0, [r9, #+0xb4]
 		ldrsh r1, [r0, #+0x12]
 		ldrsh r0, [r0, #+0x16]
@@ -80,6 +104,8 @@
 		addne r0, r0, #1 ; Round to upper bound
 		mov r1, r0
 		mov r0, r9
+		mov r2, #0
+		mov r3, #0
 		bl ConstDamage ; Deals 1/3 of Max HP damage to the user
 	end:
 		add r13,r13,#0x40

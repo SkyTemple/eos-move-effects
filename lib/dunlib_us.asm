@@ -1,3 +1,5 @@
+.definelabel AddExp, 0x0230253C
+
 .definelabel ConstDamage, 0x0230D18C
 
 .definelabel SleepSingle, 0x02311824

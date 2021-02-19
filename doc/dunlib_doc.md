@@ -1,5 +1,9 @@
 # Terminology
 
+### Function Parameters
+
+See "global_doc.md" for more information.
+
 ### User and Target
 
 Pointers to a dungeon RAM monster structure (one for the user of the move and one for the target; if the move hits multiple targets the code will be executed for each target).
@@ -25,6 +29,11 @@ MoveData is a pointer to an 8 bytes RAM structure composed of the following elem
 - pp_left (1 byte)
 - boost (1 byte)
 
+### FailMessage
+
+FailMessage indicates that the function must not send any message to the dungeon console or the console if the effect was prevented.
+For example, if this is set to 0 for the Poison function, the game will not send the message saying that the Pecha Scarf prevented poisoning.
+
 # Structures
 
 ### DungeonBaseStructure
@@ -37,24 +46,23 @@ See UsernameFodder's RAM notes about base pointers: https://docs.google.com/docu
 
 # Functions
 
+## Experience
+
+### AddExp(r0: User, r1: Target, r2: ExpGain)
+
 ## Damage
 
-### ConstDamage(r0: Target, r1: Damage, r2: ???, r3: ???)
+### ConstDamage(r0: Target, r1: Damage, r2: ???, r3: ???, [r13]: MoveID, [r13+0x4]: ???, [r13+0x8]: ???, [r13+0xC]: MessageType, [r13+0x10]: ???, [r13+0x14]: ???)
 
 9999 damage is considered as calamitous
-
-Uses a 0x18 bytes structure starting from \[r13\]
-
-\[r13+0xC\] = MessageType
-
 
 ## Status Effects
 
 ### SleepSingle(r0: Target, r1: NbTurns)
 
-Don't use this, use Sleep instead
+Don't use this, use Sleep instead.
 
-### Sleep(r0: User, r1: Target, r2: NbTurns, r3: ???)
+### Sleep(r0: User, r1: Target, r2: NbTurns, r3: FailMessage)
 
 ### Nightmare(r0: User, r1: Target, r2: NbTurns)
 
@@ -64,31 +72,23 @@ Don't use this, use Sleep instead
 
 ### Sleepless(r0: User, r1: Target)
 
-### Pause(r0: User, r1: Target, r2: ???, r3: NbTurns)
+### r0: CanInflict = Pause(r0: User, r1: Target, r2: ???, r3: NbTurns, [r13]: FailMessage, [r13+0x4]: OnlyCheck)
 
-Uses a 0x8 bytes structure starting from \[r13\]
+### r0: CanInflict = Infatuate(r0: User, r1: Target, r2: FailMessage, r3: OnlyCheck)
 
-### Infatuate(r0: User, r1: Target, r2: ???, r3: ???)
-
-### Burn(r0: User, r1: Target, r2: SpecialEffect, r3: ???)
-
-Uses a 0x4 bytes structure starting from \[r13\]
-
-r3 must be != 0
-
-\[r13\] must be == 0
+### r0: CanInflict = Burn(r0: User, r1: Target, r2: SpecialEffect, r3: FailMessage, [r13]: OnlyCheck)
 
 ### AllTeamBurn()
 
-### Poison(r0: User, r1: Target, r2: ???, r3: ???)
+### r0: CanInflict = Poison(r0: User, r1: Target, r2: FailMessage r3: OnlyCheck)
 
-### BadPoison(r0: User, r1: Target, r2: ???, r3: ???)
+### r0: CanInflict = BadPoison(r0: User, r1: Target, r2: FailMessage, r3: OnlyCheck)
 
-### Freeze(r0: User, r1: Target, r2: ???)
+### Freeze(r0: User, r1: Target, r2: FailMessage)
 
-### Constrict(r0: User, r1: Target, r2: ???, r3: ???)
+### Constrict(r0: User, r1: Target, r2: ???, r3: FailMessage)
 
-### Immobilize(r0: User, r1: Target, r2: ???)
+### Immobilize(r0: User, r1: Target, r2: FailMessage)
 
 ### Root(r0: User, r1: Target)
 
@@ -96,30 +96,33 @@ r3 must be != 0
 
 ### Petrify(r0: User, r1: Target)
 
-### AttackStatDown(r0: User, r1: Target, r2: StatType, r3: NbStages)
-### DefenseStatDown(r0: User, r1: Target, r2: StatType, r3: NbStages)
-### AttackStatUp(r0: User, r1: Target, r2: StatType, r3: NbStages)
-### DefenseStatUp(r0: User, r1: Target, r2: StatType, r3: NbStages)
+### AttackStatDown(r0: User, r1: Target, r2: StatType, r3: NbStages, [r13]: ???, [r13+0x4]: ???)
+### DefenseStatDown(r0: User, r1: Target, r2: StatType, r3: NbStages, [r13]: ???, [r13+0x4]: ???)
+### AttackStatUp(r0: User, r1: Target, r2: StatType, r3: NbStages, [r13]: ???, [r13+0x4]: ???)
+### DefenseStatUp(r0: User, r1: Target, r2: StatType, r3: NbStages, [r13]: ???, [r13+0x4]: ???)
 
-### AttackStatMinMax(r0: User, r1: Target, r2: StatType, r3: StatChange)
-### DefenseStatMinMax(r0: User, r1: Target, r2: StatType, r3: StatChange)
-### FocusStatUp(r0: User, r1: Target, r2: StatType, r3: NbStages)
-### FocusStatDown(r0: User, r1: Target, r2: StatType, r3: NbStages)
+### AttackStatMinMax(r0: User, r1: Target, r2: StatType, r3: StatChange, [r13]: ???)
+### DefenseStatMinMax(r0: User, r1: Target, r2: StatType, r3: StatChange, [r13]: ???)
+### FocusStatUp(r0: User, r1: Target, r2: StatType)
+### FocusStatDown(r0: User, r1: Target, r2: StatType)
 
-### Cringe(r0: User, r1: Target, r2: ???, r3: ???)
+### r0: CanInflict = Cringe(r0: User, r1: Target, r2: FailMessage, r3: OnlyCheck)
 
-### Paralyse(r0: User, r1: Target, r2: ???, r3: ???)
+### r0: CanInflict = Paralyse(r0: User, r1: Target, r2: FailMessage, r3: OnlyCheck)
 
 ### r0: HasEffect = CheckAdditionalEffect(r0: Target, r1: EffectID)
 
 Returns 0 if it hasn't this additional effect or any other value if it has.
 
-### SpeedStatUp(r0: User, r1: Target, r2: NbStages, r3: NbTurns)
-### SpeedStatUpOneStage(r0: User, r1: Target, r2: NbTurns)
+### SpeedStatUp(r0: User, r1: Target, r2: NbStages, r3: NbTurns, [r13]: ???)
 
-### SpeedStatDown(r0: User, r1: Target, r2: NbStages, r3: NbTurns)
+### SpeedStatUpOneStage(r0: User, r1: Target, r2: NbTurns, r3: ???)
 
-### SealMove(r0: User, r1: Target, r2: ???)
+Calls SpeedStatUp passing 1 to r2, r2 to r3 and r3 to \[r13\].
+
+### SpeedStatDown(r0: User, r1: Target, r2: NbStages, r3: NbTurns, [r13]: ???)
+
+### SealMove(r0: User, r1: Target, r2: FailMessage)
 
 ### RandomSpeedUpDown(r0: User, r1: Target)
 
@@ -140,7 +143,7 @@ Always returns 0 if the User or the Target fainted.
 
 ### r0: Success = RandomChanceU(r0: User, r1: Chance)
 
-Chance is a chance between 0 and 100.
+Chance is a chance between 0 and 100. A 0 Chance is considered as a sure success.
 
 Success returns 0 if it doesn't pass the chance or any other value if it passes.
 

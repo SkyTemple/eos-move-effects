@@ -1,5 +1,9 @@
 # Terminology
 
+### Function Parameters
+
+See "global_doc.md" for more information.
+
 # Structures
 
 # Functions
