@@ -36,7 +36,7 @@
 .definelabel SpeedStatDown, 0x023153B4
 .definelabel SealMove, 0x0231551C
 .definelabel RandomSpeedUpDown, 0x0231568C
-.definelabel ResetStats, 0x023156EC
+.definelabel ResetFocusStat, 0x023156EC
 .definelabel Confuse, 0x02315998
 .definelabel Fear, 0x02315CCC
 .definelabel RaiseHP, 0x02315D44

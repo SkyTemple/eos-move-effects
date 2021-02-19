@@ -114,13 +114,13 @@ Don't use this, use Sleep instead.
 
 Returns 0 if it hasn't this additional effect or any other value if it has.
 
-### SpeedStatUp(r0: User, r1: Target, r2: NbStages, r3: NbTurns, [r13]: ???)
+### SpeedStatUp(r0: User, r1: Target, r2: NbStages, r3: NbTurns, [r13]: FailMessage)
 
-### SpeedStatUpOneStage(r0: User, r1: Target, r2: NbTurns, r3: ???)
+### SpeedStatUpOneStage(r0: User, r1: Target, r2: NbTurns, r3: FailMessage)
 
 Calls SpeedStatUp passing 1 to r2, r2 to r3 and r3 to \[r13\].
 
-### SpeedStatDown(r0: User, r1: Target, r2: NbStages, r3: NbTurns, [r13]: ???)
+### SpeedStatDown(r0: User, r1: Target, r2: NbStages, r3: FailMessage)
 
 ### SealMove(r0: User, r1: Target, r2: FailMessage)
 
@@ -128,7 +128,7 @@ Calls SpeedStatUp passing 1 to r2, r2 to r3 and r3 to \[r13\].
 
 Randomly increases or decreases speed by one stage (50/50).
 
-### ResetStats(r0: User, r1: Target, r2: ???, r3: ???)
+### ResetFocusStat(r0: User, r1: Target, r2: StatType, r3: ???)
 
 ### r0: CanInflict = Confuse(r0: User, r1: Target, r2: FailMessage, r3: OnlyCheck)
 
