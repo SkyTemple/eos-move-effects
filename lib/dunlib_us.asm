@@ -43,6 +43,8 @@
 .definelabel SelfPoison, 0x023157EC
 .definelabel DestinyBond, 0x02315A50
 
+.definelabel HealAllMovesPP, 0x02317C20
+
 .definelabel RandomChanceUT, 0x02324934
 .definelabel RandomChanceU, 0x02324A20
 

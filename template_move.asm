@@ -27,7 +27,7 @@
 
 
 ; File creation
-.create "./code_out.bin", StartMoveAddress ; Change to the actual offset as this directive doesn't accept labels
+.create "./code_out.bin", MoveStartAddress ; Change to the actual offset as this directive doesn't accept labels
 	.org MoveStartAddress
 	.area MaxSize ; Define the size of the area
 		; Usable Variables: 

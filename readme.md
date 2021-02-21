@@ -1,12 +1,13 @@
-# EoS Move Effects 
+# EoS Move/Item Effects 
 
-This is a kind-of framework to code your own move effects for the game Pokémon Mystery Dungeon: Explorers of Sky.
+This is a kind-of framework to code your own move and item effects for the game Pokémon Mystery Dungeon: Explorers of Sky.
 
 Currently, only the US and EU versions are supported. 
 
 This only provides support for creating ASM code for custom effects, not for injecting it into the rom.
 
-Move effects code injection may be available soon.
+Move/Item effects code injection may be available soon.
+
 
 # Disclaimer
 
@@ -15,11 +16,11 @@ This may not work, or even worse may break your ROM, so as a advice always make 
 
 # Getting Started
 
-Move effects ASM code can be assembled using armips (see https://github.com/Kingcom/armips).
+Move/Item effects ASM code can be assembled using armips (see https://github.com/Kingcom/armips).
 
 ## Run Example Effects
 
-To run an example, you must copy it in the same directory as "template.asm". 
+To run an example, you must copy it in the same directory as "template\_move.asm" or "template\_item.asm". 
 
 The run "armips \[path\_to\_example\_script\]" (assuming you installed armips).
 
@@ -31,7 +32,7 @@ The examples are assembled for the US version, but you can change it for the EU 
 
 This requires some ARM9 asm knowledge. 
 
-It is recommended to use the file "template.asm" as a base, as it prepares all the things needed to implement a valid move effect code. 
+It is recommended to use the file "template\_move.asm" as a base for move effects, or "template\_item.asm" for item effects, as it prepares all the things needed to implement a valid move/item effect code. 
 
 Copy this file, open the copy, and uncomment the lines for the version you want. 
 Then, you can start coding your effect.

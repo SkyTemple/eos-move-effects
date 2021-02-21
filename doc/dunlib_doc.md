@@ -56,6 +56,12 @@ See UsernameFodder's RAM notes about base pointers: https://docs.google.com/docu
 
 9999 damage is considered as calamitous
 
+## Heal
+
+### HealAllMovesPP(r0: User, r1: Target, r2: PPHeal, r3: NoMessage)
+
+### r0: Success = RaiseHP(r0: User, r1: Target, r2: HPHeal, r3: MaxHPRaise, [r13]: FailMessage)
+
 ## Status Effects
 
 ### SleepSingle(r0: Target, r1: NbTurns)
@@ -133,8 +139,6 @@ Randomly increases or decreases speed by one stage (50/50).
 ### r0: CanInflict = Confuse(r0: User, r1: Target, r2: FailMessage, r3: OnlyCheck)
 
 ### r0: CanInflict = Fear(r0: User, r1: Target, r2: FailMessage, r3: OnlyCheck)
-
-### r0: Success = RaiseHP(r0: User, r1: Target, r2: HPHeal, r3: MaxHPRaise, [r13]: FailMessage)
 
 ### r0: CanInflict = SelfPoison(r0: User, r1: Target, r2: FailMessage, r3: OnlyCheck)
 
