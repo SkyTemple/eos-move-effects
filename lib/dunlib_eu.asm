@@ -51,6 +51,8 @@
 .definelabel DamageWithRecoil, 0x023289A0
 .definelabel DealDamage, 0x02333560
 
+.definelabel GetWeather, 0x02335748
+
 .definelabel ChangeString, 0x022E3418
 .definelabel SendMessageWithIDCheckULog, 0x0234BEA4
 .definelabel SendMessageWithStringCheckULog, 0x0234BEE4

@@ -166,15 +166,23 @@ Always returns 0 if the User fainted.
 
 ## Complex Effects
 
-### DamageWithRecoil(r0: User, r1: Target, r2: MoveData, r3: ???)
+### DamageWithRecoil(r0: User, r1: Target, r2: MoveData, r3: ItemID)
 
-### r0: Damaged = DealDamage(r0: User, r1: Target, r2: MoveData, r3: DamageMultiplier, [r13]: ???)
+### r0: Damaged = DealDamage(r0: User, r1: Target, r2: MoveData, r3: DamageMultiplier, [r13]: ItemID)
 
 0x100 is the normal multiplier
 
 Damaged returns a non-zero value when the target was damaged.
 
 In fact, it returns the damage dealt to the target.
+
+## Getters
+
+### r0: WeatherID = GetWeather(r0: Target)
+
+Gets the current weather for the selected target. 
+
+Applies target's effects that neutralize weather conditions.
 
 ## Messages
 

@@ -35,7 +35,7 @@
 		; r9 = User Monster Structure Pointer
 		; r4 = Target Monster Structure Pointer
 		; r8 = Move Data Structure Pointer (8 bytes: flags [4 bytes], move_id [2 bytes], pp_left [1 byte], boosts [1 byte])
-		; r7 = Unknown? Most of the time 0
+		; r7 = ID of the item that called this move (0 if the move effect isn't from an item)
 		; Returns: 
 		; r10 (bool) = ???
 		; Registers r4 to r9, r11 and r13 must remain unchanged after the execution of that code
