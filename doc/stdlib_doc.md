@@ -94,6 +94,10 @@ The first two additional parameters are passed using registers r2 and r3,
 
 the others are passed using the heap (starting from \[r13\], each parameter is 4 bytes).
 
+## General Information
+
+### r0: LangID = GetLang()
+
 ## String Manipulation
 
 ### r0: dest = StrCpy(r0: dest, r1: src)

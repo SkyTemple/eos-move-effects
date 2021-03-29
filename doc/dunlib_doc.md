@@ -46,6 +46,16 @@ See UsernameFodder's RAM notes about base pointers: https://docs.google.com/docu
 
 # Functions
 
+## Checks
+
+### r0: has_item = HasItem(r0: Target, r1: ItemID)
+
+### r0: has_ability = HasAbility(r0: Target, r1: AbilityID)
+
+### r0: matchup = GetTypeMatchup(r0: User, r1: Target, r2: TargetType, r3: MoveType)
+
+Check matchup between MoveType (opponent) Target's type (defensor, 1st type if TargetType is 0 or 2nd type if TargetType is 1)
+
 ## Experience
 
 ### AddExp(r0: User, r1: Target, r2: ExpGain)
@@ -61,6 +71,10 @@ See UsernameFodder's RAM notes about base pointers: https://docs.google.com/docu
 ### HealAllMovesPP(r0: User, r1: Target, r2: PPHeal, r3: NoMessage)
 
 ### r0: Success = RaiseHP(r0: User, r1: Target, r2: HPHeal, r3: MaxHPRaise, [r13]: FailMessage)
+
+## Item Effects
+
+### ProcessGummiType(r0: User, r1: Target, r2: TypeID, r3:  RandomStatUpValue)
 
 ## Status Effects
 
@@ -244,7 +258,7 @@ WARNING! Deprecated: function name may change
 
 Same as SendMessageWithID but sets Log to 1.
 
-### SendMessageWithStringLog(r0: User, r1: MessageID)
+### SendMessageWithStringLog(r0: User, r1: StringPointer)
 
 Same as SendMessageWithString but sets Log to 1.
 

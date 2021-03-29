@@ -6,7 +6,9 @@ Currently, only the US and EU versions are supported.
 
 This only provides support for creating ASM code for custom effects, not for injecting it into the rom.
 
-Move/Item effects code injection may be available soon.
+A graphical ASM editor for move and item effects can be found here: https://asmeditor.skytemple.org
+
+Move/Item effects code injection is available using SkyTemple (check https://github.com/SkyTemple).
 
 
 # Disclaimer
@@ -52,6 +54,8 @@ Specific credits to UsernameFodder for their Dungeon RAM research notes.
 Credits to End45 for the move effects table location.
 
 Credits to PsyCommando for the FileStreams manipulation functions.
+
+Credits to Parakoopa for SkyTemple and tech-ticks for the GUI asm editor.
 
 And to all the people that have worked on hacking this game or will be in the future.
 

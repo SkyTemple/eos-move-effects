@@ -12,6 +12,8 @@
 
 .definelabel SPrintF, 0x0200D634
 
+.definelabel GetLang, 0x020205B0
+
 .definelabel StrCpy, 0x02025100
 .definelabel StrNCpy, 0x0202511C
 

@@ -1,3 +1,7 @@
+.definelabel HasItem, 0x022FF898
+.definelabel HasAbility, 0x02301D10
+.definelabel GetTypeMatchup, 0x0230AC58
+
 .definelabel AddExp, 0x0230253C
 
 .definelabel ConstDamage, 0x0230D18C
@@ -44,6 +48,8 @@
 .definelabel DestinyBond, 0x02315A50
 
 .definelabel HealAllMovesPP, 0x02317C20
+
+.definelabel ProcessGummiType, 0x0231D0C0
 
 .definelabel RandomChanceUT, 0x02324934
 .definelabel RandomChanceU, 0x02324A20
