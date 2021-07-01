@@ -1,7 +1,11 @@
 ; 
 ; ------------------------------------------------------------------------------
 ; New Add Recruitable to Team
-; Adds correctly a recruitable to team, and does not use the recruitable list.
+; Adds correctly a recruitable to storage team (a.k.a. Assembly), 
+; and does not use the recruitable list.
+; Param 1: pkmn_id
+; Param 2: origin_id+pkmn_level*256 (NB: Hard to pass 3 parameters in 2 values)
+; Returns: 1 if successfully added, otherwise 0
 ; ------------------------------------------------------------------------------
 
 

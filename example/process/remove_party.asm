@@ -1,10 +1,10 @@
 ; 
 ; ------------------------------------------------------------------------------
-; Swap Monster Entry
-; Swaps two monster data entries
-; See Remove Party if you are using this on current party members
-; Param 1: ent_id_1
-; Param 2: ent_id_2
+; Remove Party
+; Remove all party members
+; Must be called before any process that involves messing
+; with current team members
+; Don't forget to call a process that sets a default team afterwards
 ; Returns: nothing
 ; ------------------------------------------------------------------------------
 
@@ -33,27 +33,20 @@
 .create "./code_out.bin", 0x022E7248 ; Change to the actual offset as this directive doesn't accept labels
 	.org ProcStartAddress
 	.area MaxSize ; Define the size of the area
-		sub r13,r13,#0x44
+		stmdb  r13!,{r9,r10}
 		ldr r1,=0x020B0A48
 		ldr r1,[r1]
-		mov r0,r13
-		mov r2,#0x44
-		mla r1,r7,r2,r1
-		bl 0x0200330C
-		ldr r1,=0x020B0A48
-		ldr r1,[r1]
-		mov r2,#0x44
-		mla r0,r7,r2,r1
-		mla r1,r6,r2,r1
-		bl 0x0200330C
-		ldr r1,=0x020B0A48
-		ldr r1,[r1]
-		mov r2,#0x44
-		mla r0,r6,r2,r1
-		mov r1,r13
-		bl 0x0200330C
-		add r13,r13,#0x44
-		
+		add  r0,r1,#0x9000
+		ldr r9,[r0, #+0x84c]
+		mov r10,#0
+		mov r0,#0
+	loop_beg_erase:
+		strb r0,[r9, #+0x0]
+		add  r10,r10,#0x1
+		cmp r10,#0x4
+		add r9,r9,#0x68
+		blt loop_beg_erase
+		ldmia  r13!,{r9,r10}
 		b ProcJumpAddress
 		.pool
 	.endarea

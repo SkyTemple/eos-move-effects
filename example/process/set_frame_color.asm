@@ -2,6 +2,8 @@
 ; ------------------------------------------------------------------------------
 ; Set Frame Color
 ; Set the color of the frame to the one specified in first parameter
+; Param 1: border_color (0 for blue/male, 1 for pink/female)
+; Returns: nothing
 ; ------------------------------------------------------------------------------
 
 

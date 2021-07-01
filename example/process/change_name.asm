@@ -1,10 +1,8 @@
 ; 
 ; ------------------------------------------------------------------------------
-; Swap Monster Entry
-; Swaps two monster data entries
+; Sets a predefined name
 ; See Remove Party if you are using this on current party members
-; Param 1: ent_id_1
-; Param 2: ent_id_2
+; Param 1: ent_id
 ; Returns: nothing
 ; ------------------------------------------------------------------------------
 
@@ -13,10 +11,9 @@
 .nds
 .arm
 
+; TODO: Currently only for the US
 
 .definelabel MaxSize, 0x810
-
-; TODO: Currently only US versions are supported
 
 ; For US
 .include "lib/stdlib_us.asm"
@@ -33,28 +30,17 @@
 .create "./code_out.bin", 0x022E7248 ; Change to the actual offset as this directive doesn't accept labels
 	.org ProcStartAddress
 	.area MaxSize ; Define the size of the area
-		sub r13,r13,#0x44
 		ldr r1,=0x020B0A48
 		ldr r1,[r1]
-		mov r0,r13
 		mov r2,#0x44
 		mla r1,r7,r2,r1
-		bl 0x0200330C
-		ldr r1,=0x020B0A48
-		ldr r1,[r1]
-		mov r2,#0x44
-		mla r0,r7,r2,r1
-		mla r1,r6,r2,r1
-		bl 0x0200330C
-		ldr r1,=0x020B0A48
-		ldr r1,[r1]
-		mov r2,#0x44
-		mla r0,r6,r2,r1
-		mov r1,r13
-		bl 0x0200330C
-		add r13,r13,#0x44
-		
+		add r0,r1,#0x3A
+		ldr r1,=new_name
+		mov r2,#10
+		bl StrNCpy
 		b ProcJumpAddress
 		.pool
+	new_name: ;Choose a name
+		.ascii "NmW10Chars",0
 	.endarea
 .close
