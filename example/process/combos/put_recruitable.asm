@@ -33,7 +33,7 @@
 .create "./code_out.bin", 0x022E7248 ; Change to the actual offset as this directive doesn't accept labels
 	.org ProcStartAddress
 	.area MaxSize ; Define the size of the area
-		ldr r0,=MaxSize-4 ; Get From Common Value
+		ldr r0,=ProcStartAddress+MaxSize-4 ; Get From Common Value
 		ldr r0,[r0]
 		stmdb r13!, {r4}
 		mov r4,r0
