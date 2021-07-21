@@ -1,11 +1,9 @@
 ; 
 ; ------------------------------------------------------------------------------
-; Resume dungeon
-; Must be called between "main_EnterDungeon(dungeon_id, fadeout);"
-; and "main_EnterDungeon(-1, fadeout);"
-; Param 1: floor number
-; Param 2: 1 if party should not be healed, else 0
-; Returns: nothing
+; Get the floor on which the dungeon was interrupted
+; e.g. if dungeon was interrupted when going to floor 3, returns 3
+; Returns: floor_id, 0 if dungeon was ended by something else than
+; interruption or completion
 ; ------------------------------------------------------------------------------
 
 
@@ -23,14 +21,14 @@
 .definelabel ProcStartAddress, 0x022E7248
 .definelabel ProcJumpAddress, 0x022E7AC0
 .definelabel DungeonSetupStruct, 0x022AB4FC
-.definelabel SetInterrupt, 0x022DBFB0-0xC00+0x4
+.definelabel interrupted_floor, 0x022DBFB0-0xC00
 
 ; For EU
 ;.include "lib/stdlib_eu.asm"
 ;.definelabel ProcStartAddress, 0x022E7A80
 ;.definelabel ProcJumpAddress, 0x022E7B88
 ;.definelabel DungeonSetupStruct, 0x022ABE3C
-;.definelabel SetInterrupt, 0x022DC908-0xC00+0x4
+;.definelabel interrupted_floor, 0x022DC908-0xC00
 
 
 ; File creation
@@ -47,11 +45,8 @@
 		
 		; Code here
 		
-		ldr r0,=DungeonSetupStruct
-		strb r7,[r0,#+0x1]
-		
-		mov r0,r6
-		bl SetInterrupt
+		ldr r0,=interrupted_floor
+		ldr r0,[r0]
 		
 		; Always branch at the end
 		b ProcJumpAddress
