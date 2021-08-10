@@ -34,6 +34,12 @@ MoveData is a pointer to an 8 bytes RAM structure composed of the following elem
 FailMessage indicates that the function must not send any message to the dungeon console or the console if the effect was prevented.
 For example, if this is set to 0 for the Poison function, the game will not send the message saying that the Pecha Scarf prevented poisoning.
 
+### Position
+
+Position is a pointer to a 4 bytes structure with
+2 bytes: x tile position
+2 bytes: y tile position
+
 # Structures
 
 ### DungeonBaseStructure
@@ -106,7 +112,7 @@ Don't use this, use Sleep instead.
 
 ### Freeze(r0: User, r1: Target, r2: FailMessage)
 
-### Constrict(r0: User, r1: Target, r2: ???, r3: FailMessage)
+### Constrict(r0: User, r1: Target, r2: AnimationID, r3: FailMessage)
 
 ### Immobilize(r0: User, r1: Target, r2: FailMessage)
 
@@ -159,6 +165,26 @@ Randomly increases or decreases speed by one stage (50/50).
 Inflicts Poison status to the User, not the Target.
 
 ### DestinyBond(r0: User, r1: Target)
+
+### Pounce(r0: User, r1: Target, r2: Direction)
+
+If direction = 8, then the user's direction is used.
+Target is the one who will pounce. 
+
+### BlowAway(r0: User, r1: Target, r2: Direction)
+
+If direction = 8, then the user's direction is used.
+Target is the one who will blow away. 
+
+### Warp(r0: User, r1: Target, r2: WarpType, r3: Position)
+
+Warp types:
+WARP_RANDOM  (=0x0): Randomly Warps
+WARP_STAIRS  (=0x1): Warps to the stairs (+/- 2 tiles away in x and y positions)
+WARP_ROOM    (=0x2): Warps to the position defined in r3 (+/- 2 tiles away in x and y positions)
+WARP_POS     (=0x3): Warps to the exact position defined in r3
+WARP_STAIRS2 (=0x4): Warps to the stairs room (+/- 3 tiles away in x and y positions)
+WARP_LEADER  (=0x5): Warps to the leader (+/- 2 tiles away in x and y positions)
 
 ## Random Utils
 

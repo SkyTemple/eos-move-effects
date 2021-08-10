@@ -51,6 +51,16 @@
 
 .definelabel ProcessGummiType, 0x0231DB28
 
+.definelabel Pounce, 0x02320688
+.definelabel BlowAway, 0x02320848
+.definelabel Warp, 0x02321770
+.definelabel WARP_RANDOM, 0x0
+.definelabel WARP_STAIRS, 0x1
+.definelabel WARP_ROOM, 0x2
+.definelabel WARP_POS, 0x3
+.definelabel WARP_STAIRS2, 0x4
+.definelabel WARP_LEADER, 0x5
+
 .definelabel RandomChanceUT, 0x0232539C
 .definelabel RandomChanceU, 0x02325488
 
