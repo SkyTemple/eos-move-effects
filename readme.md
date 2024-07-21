@@ -51,7 +51,7 @@ This is based on all the research that has been done on the game.
 
 Specific credits to UsernameFodder for their Dungeon RAM research notes. 
 
-Credits to End45 for the move effects table location.
+Credits to Frostbyte for the move effects table location.
 
 Credits to PsyCommando for the FileStreams manipulation functions.
 
