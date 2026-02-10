@@ -20,8 +20,8 @@
 
 ; For EU
 ;.include "lib/stdlib_eu.asm"
-;.definelabel ProcStartAddress, 0x022E7A80
-;.definelabel ProcJumpAddress, 0x022E7B88
+;.definelabel ProcStartAddress, 0x022E7B88
+;.definelabel ProcJumpAddress, 0x022E8400
 
 
 ; File creation
