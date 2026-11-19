@@ -25,8 +25,8 @@
 
 ; For EU
 ;.include "lib/stdlib_eu.asm"
-;.definelabel ProcStartAddress, 0x022E7A80
-;.definelabel ProcJumpAddress, 0x022E7B88
+;.definelabel ProcStartAddress, 0x022E7B88
+;.definelabel ProcJumpAddress, 0x022E8400
 ;.definelabel DungeonSetupStruct, 0x022ABE3C
 ;.definelabel interrupted_floor, 0x022DC908-0xC00
 
